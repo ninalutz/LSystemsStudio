@@ -1,35 +1,41 @@
-  //tree(1, 15, 200, proportion, map(mouseY, 0, height, 0, 90), map(mouseX, 0, width, 45, -45));
-void tree(int level, int max, float scale, float proportion, float angle, float deviation){
-  level+=1;
-  scale *= .7;
+//defaults for trees
+int level = 1;
+float ratio=2; 
 
-  if(level<max){
-  strokeWeight(scale / 10);
+//L System function, recursively grows the L System according to the grammar 
+
+void tree(int level, int max_level, float size, float ratio, float angle, float fan){
+  level+=1;
+  size *= .7;
+
+  if(level<max_level){
+  strokeWeight(size / 10);
    pushMatrix();
-   L(angle + deviation);
-   F(scale - proportion);
-   tree(level, max, scale, proportion, angle, deviation);
+   left(angle + fan);
+   forward(size - ratio);
+   tree(level, max_level, size, ratio, angle, fan);
    popMatrix();
 
-  strokeWeight(scale/10);
+   strokeWeight(size/10);
    
    pushMatrix();
-   R(angle - deviation);
-   F(scale + proportion);
-   tree(level, max, scale, proportion, angle, deviation);
+   right(angle - fan);
+   forward(size + ratio);
+   tree(level, max_level, size, ratio, angle, fan);
    popMatrix();
   }
 }
 
-void F(float length){
+//these functions are the grammer rules of the L System
+void forward(float length){
   line(0,0, 0, -length);
   translate(0, -length);
 }
 
-void L(float angle){
+void left(float angle){
   rotate(radians(-angle));
 }
 
-void R(float angle){
+void right(float angle){
   rotate(radians(angle));
 }

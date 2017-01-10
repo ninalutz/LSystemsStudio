@@ -1,6 +1,8 @@
 # LSystemsStudio
+A collection of code from my studio project delving into algorithmic art. Info at my website.
 
-##Some experiments for my studio textile
-Currently a rough, messy implementation of L systems, a recursive algorithm for tree growth in Processing for 3D printing textiles. 
+##L-Trees
+L System trees, a script that generates a variety of 2D L System trees. I made PDFs of the output and 3D printed into textiles.
 
-Code is in progress, will be cleaned soon as the project progresses :) 
+##Hilbert
+A script that draws a 3D Hilbert curve.
